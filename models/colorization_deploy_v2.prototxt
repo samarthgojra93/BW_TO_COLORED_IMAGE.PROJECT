@@ -1,0 +1,32 @@
+name: "colorization"
+layer {
+  name: "data"
+  type: "Input"
+  top: "data"
+  input_param {
+    shape {
+      dim: 1
+      dim: 1
+      dim: 224
+      dim: 224
+    }
+  }
+}
+layer {
+  name: "conv1"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv1"
+  convolution_param {
+    num_output: 64
+    kernel_size: 3
+    stride: 1
+    pad: 1
+  }
+}
+layer {
+  name: "prob"
+  type: "Softmax"
+  bottom: "conv1"
+  top: "prob"
+}
